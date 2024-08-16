@@ -13,7 +13,7 @@ function Login({data}){
     const[errorAPI, setErrorAPI] = useState([]);
 
     async function submitData(data){
-       await  fetch(`https://localhost:7036/api/Auth`, {
+       await  fetch(`${process.env.REACT_APP_URI_API}Auth`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

@@ -33,7 +33,7 @@ function DoctorForms() {
 
 
   function submitData(data){
-    fetch(`https://localhost:7036/api/Doctor/${data.id !=  null? data.id:""}`, {
+    fetch(`${process.env.REACT_APP_URI_API}Doctor/${data.id !=  null? data.id:""}`, {
       method: `${searchParams.get("id") != null ? "PUT" : "POST"}`,
       body: JSON.stringify(data),
       headers: {
@@ -46,8 +46,6 @@ function DoctorForms() {
   
   )
     .then(  response => {
-      console.log("dasdsaasd")
-
       navigate({pathname:"/home"})
        return data;
   
