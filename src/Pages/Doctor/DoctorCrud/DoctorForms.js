@@ -38,7 +38,8 @@ function DoctorForms() {
       method: `${searchParams.get("id") != null ? "PUT" : "POST"}`,
       body: JSON.stringify(data),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+       "Content-type": "application/json; charset=UTF-8",
+          'Authorization': `Bearer ${localStorage.getItem("token")}`
       }
     })
     .then( response => {

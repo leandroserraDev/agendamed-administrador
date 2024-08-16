@@ -15,7 +15,14 @@ const goToNewDoctor = () =>
    });
     useEffect(() =>{
 
-        fetch(`${process.env.REACT_APP_URI_API}/Doctor`)
+        fetch(`${process.env.REACT_APP_URI_API}/Doctor`,   
+         {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+               'Authorization': `Bearer ${localStorage.getItem("token")}`
+           }
+         }
+        )
      .then( response => {
         return response.json() 
      }
