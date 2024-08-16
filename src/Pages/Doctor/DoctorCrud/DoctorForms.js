@@ -45,8 +45,10 @@ function DoctorForms() {
     }
   
   )
-    .then(  data => {
-      navigate({pathname:"/doctors"})
+    .then(  response => {
+      console.log("dasdsaasd")
+
+      navigate({pathname:"/home"})
        return data;
   
     })
