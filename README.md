@@ -2,7 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Available 
+
+
+Install depency for un project
+
+## `npm install react-scripts --save -force`
+
+
+In the project directory modify a variable  
+
+## `REACT_APP_URI_API= --> Value to localhost api`
+
+
 
 In the project directory, you can run:
 
