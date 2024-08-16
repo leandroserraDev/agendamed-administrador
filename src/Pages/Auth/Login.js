@@ -13,7 +13,7 @@ function Login({data}){
     const[errorAPI, setErrorAPI] = useState([]);
 
     async function submitData(data){
-       await  fetch(`${EnderecoAPI}/api/Auth`, {
+       await  fetch(`https://localhost:7036/api/Auth`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
