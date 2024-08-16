@@ -8,6 +8,7 @@ function DoctorForms() {
   const { register, control, handleSubmit, reset, trigger, setError} = useForm({
   });
   const [searchParams, setSearchParams] = useSearchParams();
+  const[errorAPI, setErrorAPI] = useState([]);
   const [doctor, setDoctor] = useState();
 
   useEffect(() =>{
@@ -46,8 +47,12 @@ function DoctorForms() {
   
   )
     .then(  response => {
-      navigate({pathname:"/"})
-       return data;
+if(response.success){
+
+  navigate({pathname:"/"})
+  return data;
+}
+setErrorAPI(response);
   
     })
     .catch(error => console.error(error));
@@ -84,6 +89,18 @@ function DoctorForms() {
       </ul>
 
       <input type="submit" />
+
+      {
+            errorAPI.error && errorAPI.error.map((item,index)=>{
+              return(
+                <li className=' h-[50px]  text-red-500' key={item.id}>
+                  <span>
+                    {item.message}
+                  </span>
+                  </li>
+              )
+            })
+          }
     </form>
     </div>
 
