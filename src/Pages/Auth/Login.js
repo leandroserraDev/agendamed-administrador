@@ -13,7 +13,7 @@ function Login({data}){
     const[errorAPI, setErrorAPI] = useState([]);
 
     async function submitData(data){
-       await  fetch(`${process.env.REACT_APP_URI_API}Auth`, {
+       await  fetch(`${process.env.REACT_APP_URI_API}/Auth`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -27,8 +27,10 @@ function Login({data}){
         
         )
           .then(  data => {
+console.log(data);
+            if(data.success){
+
             var decodeToken = jwtDecode(data.data);
-            console.log(decodeToken);
 
             if(decodeToken.role != "Administrador"){
               setErrorAPI({message:[{id: 1, message: "Sem acesso"}]})
@@ -40,6 +42,9 @@ function Login({data}){
             localStorage.setItem("userName",decodeToken.name);
             localStorage.setItem("email",decodeToken.email);
             navigate({pathname:"/"});
+          }
+
+          setErrorAPI(data)
         
           })
           .catch(error => console.error(error));
@@ -81,7 +86,7 @@ function Login({data}){
           {
             errorAPI.error && errorAPI.error.map((item,index)=>{
               return(
-                <li className=' h-[50px]  text-red-500' key={item.id}>
+                <li className=' h-[20px]  text-red-500' key={item.id}>
                   <span>
                     {item.message}
                   </span>

@@ -15,7 +15,12 @@ function DoctorForms() {
   const idParameter = searchParams.get("id");
     if(idParameter != null){
 
-      fetch(`${process.env.REACT_APP_URI_API}/Doctor/${idParameter}`)
+      fetch(`${process.env.REACT_APP_URI_API}/Doctor/${idParameter}`,{
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+             'Authorization': `Bearer ${localStorage.getItem("token")}`
+         }
+      })
    .then( response => {
       return response.json() 
    }
@@ -23,7 +28,7 @@ function DoctorForms() {
   )
    .then(  data => {
       setDoctor(data)
-      reset( data);
+      reset( data.data);
    })
    .catch(error => console.error(error));
 
@@ -50,7 +55,7 @@ function DoctorForms() {
     .then(  response => {
 if(response.success){
 
-  navigate({pathname:"/"})
+  navigate({pathname:"/doctors"})
   return data;
 }
 setErrorAPI(response);

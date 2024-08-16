@@ -14,7 +14,7 @@ const goToNewDoctor = () =>
      pathname: '/doctor'
    });
     useEffect(() =>{
-
+      console.log(localStorage.getItem("token"))
         fetch(`${process.env.REACT_APP_URI_API}/Doctor`,   
          {
           headers: {
@@ -29,7 +29,7 @@ const goToNewDoctor = () =>
    
    )
      .then(  data => {
-        SetDoctorList(data)
+        SetDoctorList(data.data)
    
      })
      .catch(error => console.error(error));
