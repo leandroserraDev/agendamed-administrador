@@ -99,7 +99,7 @@ setErrorAPI(response);
       {
             errorAPI.error && errorAPI.error.map((item,index)=>{
               return(
-                <li className=' h-[50px]  text-red-500' key={item.id}>
+                <li className=' h-[20px]  text-red-500' key={item.id}>
                   <span>
                     {item.message}
                   </span>

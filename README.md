@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Install depency for un project
 
-## `npm install react-scripts --save -force`
+## `npm i --save -force`
 
 
 In the project directory modify a variable  
